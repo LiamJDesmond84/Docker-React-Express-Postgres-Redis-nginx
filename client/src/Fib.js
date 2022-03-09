@@ -30,6 +30,8 @@ class Fib extends Component {
             index: this.state.index
         });
         this.setState({ index: "" });
+        this.fetchIndexes();
+        this.fetchValues();
     }
 
     renderSeenIndexes() {
@@ -54,7 +56,7 @@ class Fib extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Enter Your Index</label>
+                    <label>Enter Your Index: </label>
                     <input type="text" value={this.state.index} onChange={(e) => this.setState({ index: e.target.value})} />
                     <button>Submit</button>
                 </form>
