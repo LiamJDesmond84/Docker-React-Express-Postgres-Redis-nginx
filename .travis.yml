@@ -5,10 +5,29 @@ services:
   - docker
 
 before_install:
-  - docker build -t liamjdesmond84/docker-react -f Dockerfile.dev .
+  # running test with dev Dockerfile in client folder
+  - docker build -t liamjdesmond84/react-complex-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true USERNAME/react-test npm test
+  - docker run -e CI=true liamjdesmond84/react-complex-test npm test
+
+# Build & Push to DockerHub
+after_success: 
+  # no need to specify Dockerfile because it defaults to simple Dockerfile (not Dockerfile.dev)
+  - docker build -t liamjdesmond84/complex-client ./client
+  - docker build -t liamjdesmond84/complex-nginx ./nginx
+  - docker build -t liamjdesmond84/complex-server ./server
+  - docker build -t liamjdesmond84/complex-worker ./worker
+
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+  # Take build images and push them to DockerHub
+
+  - docker push liamjdesmond84/complex-client
+  - docker push liamjdesmond84/complex-nginx
+  - docker push liamjdesmond84/complex-server
+  - docker push liamjdesmond84/complex-worker
 
 # deploy:
 #   provider: elasticbeanstalk
