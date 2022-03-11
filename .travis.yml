@@ -29,16 +29,16 @@ after_success:
   - docker push liamjdesmond84/complex-server
   - docker push liamjdesmond84/complex-worker
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: 'us-east-1'
-#   app: 'docker'
-#   env: 'docker-env'
-#   bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
-#   bucket_path: 'docker'
-#   on:
-#     branch: main
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-east-1'
+  app: 'multi-docker'
+  env: 'MultiDocker-env'
+  bucket_name: 'elasticbeanstalk-us-east-1-923445559289'
+  bucket_path: 'docker-multi'
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
 
 

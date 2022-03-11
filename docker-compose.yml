@@ -6,10 +6,12 @@ services:
   client:
     # image from DockerHub
     image: liamjdesmond84/complex-client
+    mem_limit: 128m
     hostname: client
   server:
     # image from DockerHub
     image: liamjdesmond84/complex-server
+    mem_limit: 128m
     hostname: api
     # environment also set up in AWS
     environment:
@@ -23,6 +25,7 @@ services:
   worker:
     # image from DockerHub
     image: liamjdesmond84/complex-worker
+    mem_limit: 128m
     hostname: worker
     # environment also set up in AWS
     environment:
@@ -31,6 +34,7 @@ services:
   nginx:
     # image from DockerHub
     image: liamjdesmond84/complex-nginx
+    mem_limit: 128m
     hostname: nginx
     ports:
       - "80:80"
