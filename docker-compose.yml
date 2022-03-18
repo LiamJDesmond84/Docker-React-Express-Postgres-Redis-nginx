@@ -15,11 +15,14 @@ services:
     hostname: api
     # environment also set up in AWS
     environment:
-      REDIS_HOST: "----endpoint of running AWS redis instance----"
+      #REDIS_HOST: "----endpoint of running AWS redis instance----"
+      REDIS_HOST: redis
       REDIS_PORT: 6379
       PGUSER: postgres
-      PGHOST: "----endpoint of running AWS postgres instance----"
-      PGDATABASE: "----YourDatabaseName----"
+      #PGHOST: "----endpoint of running AWS postgres instance----"
+      PGHOST: postgres
+      #PGDATABASE: "----YourDatabaseName----"
+      PGDATABASE: postgres
       PGPASSWORD: postgres_password
       PGPORT: 5432
   worker:
