@@ -55,7 +55,7 @@ services:
             context: ./nginx
             dockerfile: Dockerfile.dev
         ports:
-            # 3050 is arbitrary - browser port
+            # 3050 is arbitrary if client build is going through the nginx port(3000 in this case) - browser port
             - "3050:80"
         depends_on:
             - api
