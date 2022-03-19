@@ -57,3 +57,6 @@ services:
         ports:
             # 3050 is arbitrary - browser port
             - "3050:80"
+        depends_on:
+            - api
+            - client
